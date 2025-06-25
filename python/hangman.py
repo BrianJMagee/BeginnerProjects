@@ -1,33 +1,49 @@
 import random
+import string
 
-#keep track of lives
+def inGuessedLetters(gLetters, uGuess):
+    if uGuess in gLetters or not uGuess.isalpha():
+        print("Already guessed or invalid letter.")
+        return True
+    return False
+
+def updateRevealed(wLetters, revealed, uGuess):
+    for i in range(len(wLetters)):
+        if wLetters[i] == uGuess:
+            revealed[i] = uGuess
+    return revealed
+
+# --- Main Program ---
 lives = 5
+words = ["apple", "banana", "orange"]
+guessedLetters = []
 
-#computer picks a word
-words = ("Banana", "Apple", "Orange")
-computerChoice = words[random.randint(0, 2)]
-wordLength = len(computerChoice)
-underscoreArray = []
+computerWord = random.choice(words).upper()
+wordLetters = list(computerWord)
+revealedLetters = ["_" for _ in wordLetters]
 
-for i in range(0, wordLength):
-    underscoreArray.append("_")
+print("I'm thinking of a word with", len(computerWord), "letters.")
 
-#loop to repeat the prints
-play = True
-while play == True:
-    #print statemets
-    print("Here is the hidden word")
-    print(underscoreArray)
-    userChoice = input("Please enter a letter for your guess: ")
-    
-    if computerChoice.find(userChoice):
-        underscoreArray[computerChoice.find(userChoice)] = userChoice
+while lives > 0 and "_" in revealedLetters:
+    print("\nWord progress:", " ".join(revealedLetters))
+    userGuess = input("Guess a letter: ").upper()
+
+    if inGuessedLetters(guessedLetters, userGuess):
+        lives -= 1
+        print(f"Lives remaining: {lives}")
+        continue
+
+    guessedLetters.append(userGuess)
+
+    if userGuess in wordLetters:
+        print("Correct!")
+        revealedLetters = updateRevealed(wordLetters, revealedLetters, userGuess)
     else:
         lives -= 1
-        print(lives)
+        print("Wrong!")
+        print(f"Lives remaining: {lives}")
 
-    play = True
-
-
-#if the user guesses a letter in the word, that is letter is revealed
-#if the user guesses a wrong letter, they lose a life
+if "_" not in revealedLetters:
+    print("\nYou won! The word was:", computerWord)
+else:
+    print("\nYou lost. The word was:", computerWord)
