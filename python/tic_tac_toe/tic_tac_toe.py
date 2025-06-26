@@ -1,10 +1,10 @@
 class TicTacToe:
-    def __init__(self, board, active_player, player1, player2): #, computer_player
+    def __init__(self, board, player1, player2, used_coords):
         self.board = board
         self.active_player = player1
         self.player1 = player1
         self.player2 = player2
-        #self.computerPlayer = computer_player
+        self.used_coords = used_coords
 
     def switchPlayer(self):
         if self.active_player == self.player1: self.active_player = self.player2
@@ -12,7 +12,7 @@ class TicTacToe:
 
     def play(self):
         #ask for an input
-        position = self.active_player.getMove()
+        position = self.active_player.getMove(self.used_coords)
 
         #check if a valid input
         valid = self.board.isValidMove(position)
