@@ -1,37 +1,62 @@
-"""Purpose: Manages the game board, printing, and checking win conditions.
-
-Attributes:
-grid: 2D list or flat list representing the board state
-
-Methods:
-display(): prints the board
-
-update(position, symbol): places a move on the board
-
-is_full(): checks if the board is full
-
-check_winner(symbol): checks if a player with symbol has won
-
-is_valid_move(position): checks if the move is allowed"""
-
-class board:
+class Board:
     def __init__(self):
-        self.grid = [["|", " ", "|", " ", "|", " ", "|", " ", "|"], 
-                     ["|", " ", "|", " ", "|", " ", "|", " ", "|"],
-                     ["|", " ", "|", " ", "|", " ", "|", " ", "|"]]
+        self.grid = [["|", " ", "|", " ", "|", " ", "|"], 
+                     ["|", " ", "|", " ", "|", " ", "|"],
+                     ["|", " ", "|", " ", "|", " ", "|"]]
 
     def display(self):
+        print("*******")
         for row in self.grid:
-           print("".join(row))    
+           print("".join(row)) 
+        print("*******")
+   
            
-    def update(position, symbol):
-        pass
+    def update(self, position, symbol):
+        #position is the coordinates for a 2d array
+        #at postiotion, add symbol to self.grid
+        x = position[0]
+        y = position[1]
 
-    def isFull():
-        pass
+        self.grid[x][y] = symbol
 
-    def checkWinner(symbol):
-        pass
+    def isFull(self):
+        for row in self.grid:
+            for element in row:
+                if element == " ":
+                    return False
+        return True
 
-    def isValidMove(position):
-        pass
+    def checkWinner(self, symbol):
+        winning_positions = [
+            # Rows
+            [(0,1), (0,3), (0,5)],
+            [(1,1), (1,3), (1,5)],
+            [(2,1), (2,3), (2,5)],
+            
+            # Columns
+            [(0,1), (1,1), (2,1)],
+            [(0,3), (1,3), (2,3)],
+            [(0,5), (1,5), (2,5)],
+            
+            # Diagonals
+            [(0,1), (1,3), (2,5)],
+            [(0,5), (1,3), (2,1)]
+        ]
+
+        for positions in winning_positions:
+            matched = True
+            for x, y in positions:
+                if self.grid[x][y] != symbol:
+                    matched = False
+                    break
+            if matched:
+                return True
+
+        return False
+
+    def isValidMove(self, position):
+        x = position[0]
+        y = position[1]
+
+        if self.grid[x][y] == " ": return True
+        else: return False

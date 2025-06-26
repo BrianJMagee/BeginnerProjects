@@ -1,31 +1,41 @@
-"""Purpose: Manages the game loop and switching turns
-
-Attributes:
-board: an instance of Board
-
-player1 and player2: instances of Player
-
-current_player: keeps track of whose turn it is
-
-Methods:
-switch_player(): toggles between players
-
-play(): main game loop
-
-end_game(winner): prints the result and ends the game"""
-
 class TicTacToe:
-    def __init__(self, board, player1, player2, computerPlayer):
+    def __init__(self, board, active_player, player1, player2): #, computer_player
         self.board = board
+        self.active_player = player1
         self.player1 = player1
         self.player2 = player2
-        self.computerPlayer = computerPlayer
+        #self.computerPlayer = computer_player
 
-    def switchPlayer():
-        pass
+    def switchPlayer(self):
+        if self.active_player == self.player1: self.active_player = self.player2
+        elif self.active_player == self.player2: self.active_player = self.player1
 
-    def play():
-        pass
+    def play(self):
+        #ask for an input
+        position = self.active_player.getMove()
 
-    def endGame(winner):
-        pass
+        #check if a valid input
+        valid = self.board.isValidMove(position)
+
+        #update the board
+        if self.active_player == self.player1 and valid: 
+            self.board.update(position, self.active_player.symbol)
+        elif self.active_player == self.player2 and valid: 
+            self.board.update(position, self.active_player.symbol)
+
+        #display the board
+        self.board.display()
+
+        #check if someone won
+        win = self.board.checkWinner(self.active_player.symbol)
+        if win == True: 
+            return TicTacToe.endGame(self, self.active_player.name)
+        elif valid:
+            #toggle player
+            TicTacToe.switchPlayer(self)
+            return True
+        else: return True
+
+    def endGame(self, winner):
+        print(f"{winner} has won!!!!")
+        return False
