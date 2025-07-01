@@ -1,7 +1,7 @@
 class To_Do_List:
     #Manages a list of tasks.
-    def __init__(self, tasks):
-        self.tasks = tasks
+    def __init__(self):
+        self.tasks = []
     
     def add_task(description):
         pass
