@@ -11,3 +11,6 @@ class Task:
 
     def return_string(self):
         return self.description
+    
+    def return_is_complete(self):
+        return self.completed

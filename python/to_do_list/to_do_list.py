@@ -5,6 +5,7 @@ class To_Do_List:
     def __init__(self):
         self.tasks = []
     
+
     def add_task(self, description):
         #creates task object
         #adds to list
@@ -12,16 +13,17 @@ class To_Do_List:
 
 
     def remove_task(self, index):
-        self.tasks.remove(index)
+        self.tasks.pop(index)
 
 
     def display(self):
         #prints or return list of tasks with status
+        print("\n********Your_Tasks********")
         number = 1
         for element in self.tasks:
-            print(f"{number}: {element.return_string()}")
+            print(f"{number}: {element.return_string()}     Status: {element.return_is_complete()}")
             number+=1
-
+        print("\n**************************")
 
     def complete_task(self, index):
         self.tasks[index].mark_complete() 
