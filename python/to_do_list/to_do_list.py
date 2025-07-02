@@ -16,14 +16,14 @@ class To_Do_List:
         self.tasks.pop(index)
 
 
-    def display(self):
+    def display(self, output):
         #prints or return list of tasks with status
-        print("\n********Your_Tasks********")
+        output("\n********Your_Tasks********")
         number = 1
         for element in self.tasks:
             print(f"{number}: {element.return_string()}     Status: {element.return_is_complete()}")
             number+=1
-        print("\n**************************")
+        output("\n**************************")
 
     def complete_task(self, index):
         self.tasks[index].mark_complete() 
