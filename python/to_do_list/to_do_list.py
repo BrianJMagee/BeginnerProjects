@@ -21,7 +21,7 @@ class To_Do_List:
         output("\n********Your_Tasks********")
         number = 1
         for element in self.tasks:
-            print(f"{number}: {element.return_string()}     Status: {element.return_is_complete()}")
+            output(f"{number}: {element.return_string()}     Status: {element.return_is_complete()}")
             number+=1
         output("\n**************************")
 

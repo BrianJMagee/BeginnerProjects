@@ -13,4 +13,4 @@ class Task:
         return self.description
     
     def return_is_complete(self):
-        return self.completed
+        return "Complete" if self.completed else "Incomplete"
