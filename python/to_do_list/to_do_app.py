@@ -33,7 +33,7 @@ class To_Do_App:
             self.print_menu()
 
             #get choice
-            choice = self.get_choice()
+            choice = self.get_input("Choose option: ", int)
 
             #handle choice
             run = self.handle_choice(choice)
@@ -49,54 +49,42 @@ class To_Do_App:
         self.output("**************************")
 
 
-    def get_choice(self):
+    #here I combined all three of the input functions into one.
+    #this one takes a prompt and handles input for everythin, however how do i handle casting?
+    #well i set the default to string, and pass a different one if it's an int
+    def get_input(self, prompt, cast_func=str):
         try:
-            choice = int(self.input("Please enter your choice: ")) #now the input isn't hard coded! :)
-            return choice
-
-        except ValueError as e:
+            user_input = self.input(prompt)
+            return cast_func(user_input)
+        except (ValueError, TypeError) as e:
             self.output(f"Error: {e}")
-    
-
-    def get_description(self):
-        try:
-            desc = str(self.input("Please enter the description for the task: "))
-            return desc
-
-        except ValueError as e:
-            self.output(f"Error: {e}")
-            
-    
-    def get_index(self):
-        try:
-            task_id = int(self.input("Please enter your choice: "))
-            index = task_id - 1
-            return index
-
-        except ValueError as e:
-            self.output(f"Error: {e}")
+            return None
 
 
     def handle_choice(self, choice):
         #Dispatches to ToDoList methods
         match choice:
             case 1: 
-                description = self.get_description()
+                description = self.get_input("Please enter a description for the task: ", str)
                 self.my_list.add_task(description)
                 return True
             case 2: 
-                index = self.get_index()
+                #a lambda function is a small, temprary function that we can create instead of using def
+                #so, i pass the entire function lambda x to get_input. Then, when x is used in get_input,
+                #it calls the lambda function where it will convert x to an int and subtract 1 and return the result to get_input
+                #which will further return the result to the index attribute below
+                index = self.get_input("Please enter the task to be removed: ", lambda x: int(x) - 1)
                 self.my_list.remove_task(index)
                 return True
             case 3: 
                 self.my_list.display(self.output)
                 return True
             case 4:
-                index = self.get_index()
+                index = self.get_input("Please enter the task to be marked as complete: ", lambda x: int(x) - 1)
                 self.my_list.complete_task(index)
                 return True
             case 5:
-                index = self.get_index()
+                index = self.get_input("Please enter the task to be marked as incomplete: ", lambda x: int(x) - 1)
                 self.my_list.incomplete_task(index)
                 return True
             case 6: 
