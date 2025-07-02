@@ -5,9 +5,6 @@ class To_Do_App:
         self.my_list = To_Do_List()
 
     def run(self):
-        tasks = []
-        my_list = To_Do_List(tasks=tasks)
-
         run = True
         while run:
             #print menu
@@ -30,7 +27,8 @@ class To_Do_App:
         print("4. Quit")
         print("**************************")
 
-    def get_input():
+
+    def get_choice():
         try:
             choice = int(input("Please enter your choice: "))
             return choice
@@ -38,13 +36,23 @@ class To_Do_App:
         except ValueError as e:
             print(f"Error: {e}")
     
+
+    def get_description():
+        try:
+            desc = str(input("Please enter the description for the task: "))
+            return desc
+
+        except ValueError as e:
+            print(f"Error: {e}")
+            
     
 
     def handle_choice(choice, my_list):
         #Dispatches to ToDoList methods
         match choice:
             case 1: 
-                my_list.add_task()
+                description = self.get_description()
+                my_list.add_task(description)
                 return True
             case 2: 
                 my_list.remove_task()

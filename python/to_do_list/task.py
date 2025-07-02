@@ -3,11 +3,11 @@ class Task:
         self.description = description
         self.completed = completed
     
-    def mark_complete():
-        pass
+    def mark_complete(self):
+        self.completed = True
 
-    def mark_incomplete():
-        pass
+    def mark_incomplete(self):
+        self.completed = False
 
-    def return_string():
-        pass
+    def return_string(self):
+        return self.description

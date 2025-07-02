@@ -1,24 +1,35 @@
+from task import Task
+
 class To_Do_List:
     #Manages a list of tasks.
     def __init__(self):
         self.tasks = []
     
-    def add_task(description):
-        pass
+    def add_task(self, description):
+        #creates task object
+        #adds to list
+        self.tasks.append(Task(description=description, completed=False))
 
-    def remove_task(index):
-        pass
 
-    def display():
+    def remove_task(self, index):
+        self.tasks.remove(index)
+
+
+    def display(self):
         #prints or return list of tasks with status
-        pass
+        number = 1
+        for element in self.tasks:
+            print(f"{number}: {element.return_string()}")
+            number+=1
 
-    def complete_task(index):
+
+    def complete_task(self, index):
+        self.tasks[index].mark_complete() 
         
-        pass
 
-    def incomplete_task(index):
-        pass
+    def incomplete_task(self, index):
+        self.tasks[index].mark_incomplete() 
+
 
 """
     def save_to_file(filename):
