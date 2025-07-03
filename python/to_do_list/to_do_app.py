@@ -16,6 +16,7 @@ class To_Do_App:
     def __init__(self, to_do_list=None, i_stream=input, o_stream=print):
         # checks if the passed list is not none (meaning it exists), if there isn't one, create one
         self.my_list = to_do_list if to_do_list is not None else To_Do_List()
+
         # here i create a new attribute input and assign it to my i_stream
         self.input = i_stream
         self.output = o_stream
@@ -25,8 +26,12 @@ class To_Do_App:
             "Show tasks",
             "Mark task as complete",
             "Mark task as incomplete",
+            "Save tasks to file",
+            "Load tasks from file",
             "Quit",
         ]
+        self.file_path = "C:\\Users\\brian\\Documents\\Workspace_VS_Code\\beginner_projects\\python\\to_do_list\\list.txt"
+
 
     def run(self):
         run = True
@@ -129,5 +134,15 @@ class To_Do_App:
             
 
             case 6:
+                self.my_list.save_to_file(output=self.output, filename=self.file_path)
+                return True
+
+
+            case 7:
+                self.my_list.load_from_file(output=self.output, filename=self.file_path)
+                return True
+
+
+            case 8:
                 self.output("Thanks for using To-Do-List!")
                 return False
