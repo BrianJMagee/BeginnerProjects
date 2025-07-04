@@ -2,8 +2,10 @@ from task import Task
 
 class To_Do_List:
     #Manages a list of tasks.
-    def __init__(self):
+    #inject open()
+    def __init__(self, file_opener=open):
         self.tasks = []
+        self.file_opener = file_opener
     
 
     def add_task(self, description):
@@ -35,7 +37,7 @@ class To_Do_List:
 
     def save_to_file(self, filename, output):
         try:
-            with open(filename, mode="w") as file:
+            with self.file_opener(filename, mode="w") as file:
                 for task in self.tasks:
                     line = f"{task.return_string()}|||{task.completed}\n"
                     file.write(line)
@@ -48,7 +50,7 @@ class To_Do_List:
 
     def load_from_file(self, filename, output):
         try:
-            with open(filename, mode="r") as file:
+            with self.file_opener(filename, mode="r") as file:
                 self.tasks.clear()  # Clear current tasks
                 for line in file:
                     parts = line.strip().split("|||")
