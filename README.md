@@ -19,7 +19,8 @@ These projects are mostly CLI (command line interface) and help build core Pytho
 
 **Skills gained**: input/output, conditionals, loops, functions, lists, dictionaries.
 
----
+---##############I THINK I SHOULD DO THE INTERMEDIATE PROJECTS, THEN MOVE ON WITH THEORY TO LEARN ABOUT DATABASES
+##########ALSO SHOULD DO MORE DSA 
 
 ### 🟡 **Intermediate Projects** (Learn modules, testing, file handling, and basic UI)
 
