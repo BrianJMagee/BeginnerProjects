@@ -1,0 +1,72 @@
+body{
+    background-color: white;
+}
+h1{
+    color: black;
+    border: solid;  /*There are several more*/
+    border-width: 3px;
+    border-color: purple;   /*there is a shorthand for the three previous: border: 3px solid purple;*/
+    border-radius: 20px;  /*this determines how round the corners are*/
+    /*There are two shadows here*/
+    text-shadow: 5px 5px 2px hsl(0, 100%, 61%), -5px -5px 2px hsl(197, 100%, 61%);
+
+}
+/*to select an element by id, use # then id*/
+#p1{
+    color:red;
+    border-bottom: 3px dotted red;
+}
+#p2{
+    border-top: 3px double orange;
+    color:orange;
+}
+#p3{
+    border-right: 3px groove yellow;
+    color:yellow;
+}
+#p4{
+    border-left: dashed;
+    color:green;
+}
+#box{
+    width: 100px;
+    height: 100px;
+    background-color: hsl(0, 0%, 92%);
+    box-shadow: 3px 3px 5px;
+}
+/*to select everything that is part of a class, we use .nameofclass
+eg:
+
+.odd{
+    color:yellow
+}
+
+
+If i ever need a different font, look it up
+
+
+*/
+
+body{
+    /*removes all the margins from the entire html body*/
+    margin: 0px;
+}
+.box{
+    border: 5px solid;
+    font-size: 5em;
+    width: 250px;
+    height: 250px;
+    margin-top: 50px; /*adds 50 pixels to the top margin*/
+    margin-right: 50px;
+    margin-bottom: 50px;
+    margin-left: 50px;
+}
+#box1{
+    background-color: hsl(0, 100%, 60%);
+    margin: auto;   /*successfully centered a div! The div will be locked to the middle even after resizing*/
+
+}
+#box2{
+    background-color: hsl(189, 100%, 55%);
+    margin-right: auto; /*will lock the box to the right. Keep in mind it is still being affected by the .box class*/
+}
