@@ -2,6 +2,14 @@
 <html>
     <head><!-- head tags contain information about the web page-->
         <title>My first website</title>
+
+        <!--the link tag specifies the relationship between this document and an external source-->
+        <!--I'm specifically using this link tag to change the favicon of the website. (The little icon on the tab)-->
+        <link rel="icon" type="image/png" href="waltuh.png">
+
+
+
+
     </head>
     <body><!-- body tags contain visable content on web page-->
         <h1>Hello World</h1><!-- H1 defines a large heading-->
@@ -11,7 +19,7 @@
         <h5>h5</h5>
         <h6>h6</h6>
 
-        <hr><!--A line-->
+        <hr><!--A line across the page-->
 
         <p>A paragraph would go here Lorem ipsum dolor sit amet consectetur adipisicing elit. Accusamus dolor earum consequatur officiis perferendis aliquam voluptates tenetur ea ullam nam asperiores assumenda, deserunt voluptatum quaerat cumque laborum consectetur, dolorum voluptate?</p><!-- paragraph tags-->
 
@@ -23,12 +31,12 @@
         <!--pre tags means pre formatted, so it keeps any features that it has in this editor-->
         
 
-<!-- a tags mean anchor tags, and allow us to have hyperlinks-->
- <!-- we also need the href attribute. -->
-  <!-- an attribute is typically a name value pair that modifies the behaviour of an element. href specifically means hypertext reference-->
-   <!-- target = blank opens the link in a new tab-->
-    <!-- title = shows a tooltip when you hover on link-->
-     <!-- can also give file paths in href =-->
+        <!-- a tags mean anchor tags, and allow us to have hyperlinks-->
+        <!-- we also need the href attribute. -->
+        <!-- an attribute is typically a name value pair that modifies the behaviour of an element. href specifically means hypertext reference-->
+        <!-- target = blank opens the link in a new tab-->
+        <!-- title = shows a tooltip when you hover on link-->
+        <!-- can also give file paths in href =-->
         <a href="https://www.google.com/" target="_blank"
         title="goes to google.com">
             click me
@@ -41,10 +49,109 @@
          <img src="waltuh.png" alt="" height="" width="">
          </a>
 
+         <!--Audio, add controls to add controls. autoplay-->
+         <audio controls loop muted> 
+            <!--here i'm setting fallbacks incase the browser can't play waltuh. Also i'm specifying the file type so the browser knows it's an mp3 file-->
+            <source src = "waltuh.mp3" type="audio/mp3">
+            <source src = "Cash - Mark Karan, Scott Guberman, Angeline Saris, Jeremy Hoenig.mp3" type="audio/mp3">
+        </audio>
+
+        <!--similar story for videos. Can surround video with anchor tags as well-->
+        <video src="" width="" autoplay muted loop controls>
+            <source>
+        </video>
+
+
+        <p>This is normal text</p>
+        <p>This is <b>bold</b> text</p>
+        <p>This is <i>italic</i> text</p>
+        <p>This is <u>underlined</u> text</p>
+        <p>This is <del>deleted</del> text</p>
+        <p>This is <big>big</big> text</p>
+        <p>This is <small>small</small> text</p>
+        <p>This is <sub>subscript</sub> text</p>
+        <p>This is <sup>superscript</sup> text</p>
+        <p>This is <tt>monospaced</tt> text</p>
+        <!--The style is technically css-->
+        <p>This is <mark style="background-color:lightgreen">marked</mark> text</p>
+
+
+        <!--The span tag is a container that groups elements together for styling. It only spans the length of the element-->
+        <h1><span style="background-color: tomato;">This is a span title</span></h1>
+        <!--The div tag is similar but it is a block level container. It spans the entire length of the document-->
+        <h1><div style="background-color: aqua;">This is a div title</div></h1>
 
 
 
 
+
+
+        <!-- Unordered List -->
+        <h4>Groceries</h4>
+        <ul>
+            <li>milk</li><!--li = list item-->
+            <li>eggs</li>
+            <li>bread</li>
+            <li>coffee supplies</li>
+            <ul> <!--Can have nested lists like this-->
+                <li>coffee beans</li>
+                <li>creamer</li>
+                <li>sugar</li>
+            </ul>
+        </ul>
+
+        <!-- Ordered List -->
+        <h4>To do list</h4>
+        <ol>
+            <li>eat breakfast</li>
+            <li>go to class</li>
+            <li>work</li>
+            <li><mark>WATCH THIS VIDEO</mark></li>
+        </ol>
+
+
+        <!-- Description List -->
+        <h4>Mythical creatures</h4>
+        <dl style="background-color:lightgreen; border:2px solid">
+            
+            <dt>dragon</dt> <!--dt = description term-->
+            <dd>a mythical monster resembling a giant reptile, sometimes shown as having wings.</dd> <!--dd = description definition-->
+            
+            <dt>phoenix</dt>
+            <dd>an immortal bird associated with Greek mythology that cyclically regenerates or is otherwise born again.</dd>
+            
+            <dt>vampire</dt>
+            <dd>a mythical creature that subsists by feeding on the vital essence (generally in the form of blood) of the living.</dd>
+            
+            <dt>werewolf</dt>
+            <dd>an individual that can shapeshift into a wolf.</dd>
+        </dl>
+
+        <table border="1" style="background-color:black">
+            <tr align="center" style="background-color:lightblue"> <!--tr = table row-->
+                <th width="100">Sunday</th> <!--th = table header-->
+                <th width="100">Monday</th>
+                <th width="100">Tuesday</th>
+                <th width="100">Wednesday</th>
+                <th width="100">Thursday</th>
+                <th width="100">Friday</th>
+                <th width="100">Saturday</th>
+            </tr>
+            <tr align="center" style="background-color:aliceblue">
+                <td>Closed</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>9-5</td>
+                <td>10-2</td>
+            </tr>
+        </table>
+
+
+        <a href="beginner_projects\front_end\page2.html">
+            <button>Page 2</button>
+        </a>
 
     </body>
 </html>
